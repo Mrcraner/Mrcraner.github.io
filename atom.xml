@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Mrcrane的博客</title>
+  
+  <subtitle>寄君一曲，不问曲终人聚散</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://mrcraner.github.io/"/>
+  <updated>2019-07-25T00:54:39.771Z</updated>
+  <id>http://mrcraner.github.io/</id>
+  
+  <author>
+    <name>Mrcrane</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>古词古韵</title>
+    <link href="http://mrcraner.github.io/2019/07/25/%E5%8F%A4%E8%AF%8D%E5%8F%A4%E9%9F%B5/"/>
+    <id>http://mrcraner.github.io/2019/07/25/古词古韵/</id>
+    <published>2019-07-25T00:25:01.000Z</published>
+    <updated>2019-07-25T00:54:39.771Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="第一章-原文"><a href="#第一章-原文" class="headerlink" title="第一章 原文"></a>第一章 原文</h2><p>  野有蔓草<br>野有蔓草，零露漙（tuan)兮。</p><p>有美一人，清扬婉兮。</p><p>邂逅相遇，适我愿兮。</p><p>野有蔓草，零露瀼瀼(rang)。</p><p>有美一人，婉如清扬。</p><p>邂逅相遇，与子偕臧(zang)。</p><hr><h2 id="第二章-注释"><a href="#第二章-注释" class="headerlink" title="第二章 注释"></a>第二章 注释</h2><p>野：郊外田野。<br>蔓：茂盛。<br>零露：1、降落的露水。2、比喻容易消失的事物。<br>漙：音团（tuan)，形容露水多。<br>清扬：形容眼睛清澄明亮。<br>婉：美丽。<br>邂逅：没有事行相约，碰巧相遇。<br>适：指女子出嫁。<br>瀼：（二声），形容露水多；瀼瀼：露水多的样子。<br>偕：同； 臧：（平声）善，好。偕臧，相爱。</p><hr><h2 id="第三章-译文"><a href="#第三章-译文" class="headerlink" title="第三章 译文"></a>第三章 译文</h2><p>野外野草滋蔓，露水成珠圆圆。<br>有位美丽人儿，眼波顾盼生香。<br>有缘不期相遇，真是合我心愿。<br>野外野草如茵，露水密密晶莹。<br>有位俏丽人儿，纯如水波飞扬。<br>不期让我遇到，把乐和我分享。</p><hr><p>##参考文献 国风-郑风·野有蔓草鉴赏</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;第一章-原文&quot;&gt;&lt;a href=&quot;#第一章-原文&quot; class=&quot;headerlink&quot; title=&quot;第一章 原文&quot;&gt;&lt;/a&gt;第一章 原文&lt;/h2&gt;&lt;p&gt;  野有蔓草&lt;br&gt;野有蔓草，零露漙（tuan)兮。&lt;/p&gt;
+&lt;p&gt;有美一人，清扬婉兮。&lt;/p&gt;
+&lt;p&gt;邂逅
+      
+    
+    </summary>
+    
+    
+      <category term="美文赏析" scheme="http://mrcraner.github.io/tags/%E7%BE%8E%E6%96%87%E8%B5%8F%E6%9E%90/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://mrcraner.github.io/2019/07/25/hello-world/"/>
+    <id>http://mrcraner.github.io/2019/07/25/hello-world/</id>
+    <published>2019-07-25T00:14:32.858Z</published>
+    <updated>2019-07-25T00:14:32.859Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
