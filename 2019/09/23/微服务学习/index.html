@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-simple.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="微服务学习,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Mrcrane的博客" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="开篇刚开始进入软件行业时还是单体应用的时代，前后端分离的概念都还没普及，开发的时候需要花大量的时间在“强大”的JSP上面，那时候SOA已经算是新技术了。现在，微服务已经大行其道，有哪个互联网产品不说自己是微服务架构呢？但是，对于微服务的理解每个人都不太一样，这篇文章主要是聊一聊我对微服务的理解以及如何搭建经典的微服务架构，目的是梳理一下自己的一些想法，如果存在不同看法的欢迎指正！  什么是微服务首">
+<meta name="keywords" content="微服务学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微服务入门学习">
+<meta property="og:url" content="http://mrcraner.github.io/2019/09/23/微服务学习/index.html">
+<meta property="og:site_name" content="Mrcrane的博客">
+<meta property="og:description" content="开篇刚开始进入软件行业时还是单体应用的时代，前后端分离的概念都还没普及，开发的时候需要花大量的时间在“强大”的JSP上面，那时候SOA已经算是新技术了。现在，微服务已经大行其道，有哪个互联网产品不说自己是微服务架构呢？但是，对于微服务的理解每个人都不太一样，这篇文章主要是聊一聊我对微服务的理解以及如何搭建经典的微服务架构，目的是梳理一下自己的一些想法，如果存在不同看法的欢迎指正！  什么是微服务首">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://mrcraner.github.io/2019/09/23/微服务学习/BS.png">
+<meta property="og:image" content="http://mrcraner.github.io/2019/09/23/微服务学习/BSB.png">
+<meta property="og:image" content="http://mrcraner.github.io/2019/09/23/微服务学习/BSC.png">
+<meta property="og:image" content="http://mrcraner.github.io/2019/09/23/微服务学习/SERVERCENTER.png">
+<meta property="og:image" content="http://mrcraner.github.io/2019/09/23/微服务学习/config.png">
+<meta property="og:image" content="http://mrcraner.github.io/2019/09/23/微服务学习/cli.png">
+<meta property="og:image" content="http://mrcraner.github.io/2019/09/23/微服务学习/springcloud.png">
+<meta property="og:image" content="http://mrcraner.github.io/2019/09/23/微服务学习/a.png">
+<meta property="og:image" content="http://mrcraner.github.io/2019/09/23/微服务学习/b.png">
+<meta property="og:image" content="http://mrcraner.github.io/2019/09/23/微服务学习/aa.png">
+<meta property="og:updated_time" content="2019-12-23T14:31:48.104Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="微服务入门学习">
+<meta name="twitter:description" content="开篇刚开始进入软件行业时还是单体应用的时代，前后端分离的概念都还没普及，开发的时候需要花大量的时间在“强大”的JSP上面，那时候SOA已经算是新技术了。现在，微服务已经大行其道，有哪个互联网产品不说自己是微服务架构呢？但是，对于微服务的理解每个人都不太一样，这篇文章主要是聊一聊我对微服务的理解以及如何搭建经典的微服务架构，目的是梳理一下自己的一些想法，如果存在不同看法的欢迎指正！  什么是微服务首">
+<meta name="twitter:image" content="http://mrcraner.github.io/2019/09/23/微服务学习/BS.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://mrcraner.github.io/2019/09/23/微服务学习/">
+
+
+
+
+
+  <title>微服务入门学习 | Mrcrane的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mrcrane的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">寄君一曲，不问曲终人聚散</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://mrcraner.github.io/2019/09/23/微服务学习/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mrcrane">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mrcrane的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">微服务入门学习</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-23T21:14:34+08:00">
+                2019-09-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="开篇"><a href="#开篇" class="headerlink" title="开篇"></a>开篇</h1><p>刚开始进入软件行业时还是单体应用的时代，前后端分离的概念都还没普及，开发的时候需要花大量的时间在“强大”的JSP上面，那时候SOA已经算是新技术了。现在，微服务已经大行其道，有哪个互联网产品不说自己是微服务架构呢？<br>但是，对于微服务的理解每个人都不太一样，这篇文章主要是聊一聊我对微服务的理解以及如何搭建经典的微服务架构，目的是梳理一下自己的一些想法，如果存在不同看法的欢迎指正！</p>
+<hr>
+<h2 id="什么是微服务"><a href="#什么是微服务" class="headerlink" title="什么是微服务"></a>什么是微服务</h2><p>首先，什么是微服务呢？</p>
+<p>单体应用<br>相对的，要理解什么是微服务，那么可以先理解什么是单体应用，在没有提出微服务的概念的“远古”年代，一个软件应用，往往会将应用所有功能都开发和打包在一起，那时候的一个B/S应用架构往往是这样的：</p>
+<p><img src="/2019/09/23/微服务学习/BS.png" alt="BS"></p>
+<p>但是，当用户访问量变大导致一台服务器无法支撑时怎么办呢？加服务器加负载均衡，架构就变成这样了：<br><img src="/2019/09/23/微服务学习/BSB.png" alt="BSB"></p>
+<p>后面发现把静态文件独立出来，通过CDN等手段进行加速，可以提升应用的整体相应，单体应用的架构就变成：</p>
+<p><img src="/2019/09/23/微服务学习/BSC.png" alt="BSC"></p>
+<p>上面3中架构都还是单体应用，只是在部署方面进行了优化，所以避免不了单体应用的根本的缺点：</p>
+<p>代码臃肿，应用启动时间长；（代码超过1G的项目都有！）<br>回归测试周期长，修复一个小小bug可能都需要对所有关键业务进行回归测试。<br>应用容错性差，某个小小功能的程序错误可能导致整个系统宕机；<br>伸缩困难，单体应用扩展性能时只能整个应用进行扩展，造成计算资源浪费。<br>开发协作困难，一个大型应用系统，可能几十个甚至上百个开发人员，大家都在维护一套代码的话，代码merge复杂度急剧增加。</p>
+<hr>
+<h1 id="微服务"><a href="#微服务" class="headerlink" title="微服务"></a>微服务</h1><p>我认为任何技术的演进都是有迹可循的，任何新技术的出现都是为了解决原有技术无法解决的需求，所以，微服务的出现就是因为原来单体应用架构已经无法满足当前互联网产品的技术需求。</p>
+<p>在微服务架构之前还有一个概念：SOA（Service-Oriented Architecture）-面向服务的体系架构。我认为的SOA只是一个架构模型的方法论，并不是一个明确而严谨的架构标准，只是后面很多人将SOA与The Open Group的SOA参考模型等同了，认为严格按照TOG-SOA标准的才算真正的SOA架构。SOA就已经提出的面向服务的架构思想，所以微服务应该算是SOA的一种演进吧。</p>
+<p>撇开架构先不说，什么样的服务才算微服务呢？</p>
+<p>单一职责的。一个微服务应该都是单一职责的，这才是“微”的体现，一个微服务解决一个业务问题（注意是一个业务问题而不是一个接口）。<br>面向服务的。将自己的业务能力封装并对外提供服务，这是继承SOA的核心思想，一个微服务本身也可能使用到其它微服务的能力。<br>我觉得满足以上两点就可以认为典型的微服务.</p>
+<hr>
+<h1 id="微服务典型架构"><a href="#微服务典型架构" class="headerlink" title="微服务典型架构"></a>微服务典型架构</h1><p>微服务架构，核心是为了解决应用微服务化之后的服务治理问题。</p>
+<p>应用微服务化之后，首先遇到的第一个问题就是服务发现问题，一个微服务如何发现其他微服务呢？最简单的方式就是每个微服务里面配置其他微服务的地址，但是当微服务数量众多的时候，这样做明显不现实。所以需要使用到微服务架构中的一个最重要的组件：服务注册中心，所有服务都注册到服务注册中心，同时也可以从服务注册中心获取当前可用的服务清单：<br> <img src="/2019/09/23/微服务学习/SERVERCENTER.png" alt="SERVERCENTER"><br>解决服务发现问题后，接着需要解决微服务分布式部署带来的第二个问题：服务配置管理的问题。当服务数量超过一定程度之后，如果需要在每个服务里面分别维护每一个服务的配置文件，运维人员估计要哭了。那么，就需要用到微服务架构里面第二个重要的组件：配置中心，微服务架构就变成下面这样了：<br> <img src="/2019/09/23/微服务学习/config.png" alt="config"><br>以上应用内部的服务治理，当客户端或外部应用调用服务的时候怎么处理呢？服务A可能有多个节点，服务A、服务B和服务C的服务地址都不同，服务授权验证在哪里做？这时，就需要使用到服务网关提供统一的服务入口，最终形成典型微服务架构：</p>
+<p> <img src="/2019/09/23/微服务学习/cli.png" alt="cli"><br>上面是一个典型的微服务架构，当然微服务的服务治理还涉及很多内容，比如：</p>
+<p>通过熔断、限流等机制保证高可用；<br>微服务之间调用的负载均衡；<br>分布式事务（2PC、3PC、TCC、LCN等）；<br>服务调用链跟踪等等。</p>
+<hr>
+<h1 id="微服务框架"><a href="#微服务框架" class="headerlink" title="微服务框架"></a>微服务框架</h1><p>目前国内企业使用的微服务框架主要是Spring Cloud和Dubbo（或者DubboX），但是Dubbo那两年的停更严重打击了开发人员对它的信心，Spring Cloud已经逐渐成为主流，比较两个框架的优劣势的文章在网上有很多，这里就不重复了，选择什么框架还是按业务需求来吧，业务框架决定技术框架。<br>Spring Cloud全家桶提供了各种各样的组件，基本可以覆盖微服务的服务治理的方方面面，以下列出了Spring Cloud一些常用组件：</p>
+<p> <img src="/2019/09/23/微服务学习/springcloud.png" alt="springcloud"></p>
+<hr>
+<h1 id="搭建典型微服务架构"><a href="#搭建典型微服务架构" class="headerlink" title="搭建典型微服务架构"></a>搭建典型微服务架构</h1><p>本章节主要介绍如何基于Spring Cloud相关组件搭建一个典型的微服务架构。<br>首先，创建一个Maven父项目spring-cloud-examples，用于管理项目依赖包版本。由于Spring Cloud组件很多，为保证不同组件之间的兼容性，一般通过spring-cloud-dependencies统一管理Spring Cloud组件版本，而非每个组件单独引入。</p>
+<p>pom.xml配置如下：</p>
+<pre><code>&lt;!-- 继承SpringBoot父项目，注意与SpringCloud版本的匹配 --&gt;
+&lt;parent&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
+    &lt;version&gt;2.1.4.RELEASE&lt;/version&gt;
+&lt;/parent&gt;
+
+&lt;properties&gt;
+    &lt;spring.boot.version&gt;2.1.4.RELEASE&lt;/spring.boot.version&gt;
+    &lt;spring.cloud.version&gt;Greenwich.SR1&lt;/spring.cloud.version&gt;
+    &lt;lombok.version&gt;1.18.8&lt;/lombok.version&gt;
+    &lt;maven.compiler.plugin.version&gt;3.8.1&lt;/maven.compiler.plugin.version&gt;
+&lt;/properties&gt;
+
+
+&lt;dependencyManagement&gt;
+    &lt;dependencies&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-cloud-dependencies&lt;/artifactId&gt;
+            &lt;version&gt;${spring.cloud.version}&lt;/version&gt;
+            &lt;type&gt;pom&lt;/type&gt;
+            &lt;scope&gt;import&lt;/scope&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;</code></pre> 
+
+<hr>
+<h2 id="搭建服务配置中心"><a href="#搭建服务配置中心" class="headerlink" title="搭建服务配置中心"></a>搭建服务配置中心</h2><p>在spring-cloud-examples项目下创建一个子项目spring-cloud-example-config，添加Spring Cloud Config Server端的相关依赖包:<br><dependencies><br>        <dependency><br>            <groupid>org.springframework.cloud</groupid><br>            <artifactid>spring-cloud-config-server</artifactid><br>        </dependency><br>    </dependencies><br>添加Spring Boot配置文件application.yml，配置如下：<br>spring:<br>  application:<br>    name: spring-cloud-example-config<br>  profiles:<br>    active: native #启用本地配置文件<br>  cloud:<br>    config:<br>      server:<br>        native:<br>          search-locations: classpath:/configs/ #配置文件扫描目录</p>
+<p>server:<br>  port: 8000 #服务端口</p>
+<p>启动类添加注解@EnableConfigServer通过启用Config Server服务。</p>
+<p>@SpringBootApplication<br>@EnableConfigServer<br>public class Application {</p>
+<pre><code>public static void main(String[] args) {
+    SpringApplication.run(Application.class, args);
+}</code></pre><p>}</p>
+<h2 id="搭建服务注册中心"><a href="#搭建服务注册中心" class="headerlink" title="搭建服务注册中心"></a>搭建服务注册中心</h2><p>在spring-cloud-examples项目下创建一个子项目spring-cloud-example-registry，在pom.xml中添加Eureka Server相关依赖包：<br>    <dependencies><br>        <dependency><br>            <groupid>org.springframework.cloud</groupid><br>            <artifactid>spring-cloud-netflix-eureka-server</artifactid><br>        </dependency></dependencies></p>
+<pre><code>    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-cloud-starter-config&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+&lt;/dependencies&gt;</code></pre><p>在spring-cloud-example-config配置中心项目的src/main/resource/configs目录下添加一个服务配置文件spring-cloud-example-registry.yml，配置如下：<br>spring:<br>  application:<br>    name: spring-cloud-example-registry</p>
+<p> #Eureka相关配置<br>eureka:<br>  client:<br>    register-with-eureka: false #不注册服务<br>    fetch-registry: false #不拉去服务清单<br>    serviceUrl:<br>      defaultZone: <a href="http://localhost:${server.port}/eureka/" target="_blank" rel="noopener">http://localhost:${server.port}/eureka/</a> #多个通过英文逗号分隔</p>
+<p>server:<br>  port: 8001</p>
+<p>在spring-cloud-example-registry项目的src/main/resource/目录添加bootstrap.yml配置文件，配置如下：</p>
+<p>spring:<br>  cloud:<br>    config:<br>      name: spring-cloud-example-registry #配置文件名称，多个通过逗号分隔<br>      uri: <a href="http://localhost:8000" target="_blank" rel="noopener">http://localhost:8000</a> #Config Server服务地址</p>
+<p>启动类添加注解@EnableEurekaServer通过启用Eureka Server服务。<br>@SpringBootApplication<br>@EnableEurekaServer<br>public class Application {</p>
+<pre><code>public static void main(String[] args) {
+    SpringApplication.run(Application.class, args);
+}</code></pre><p>}</p>
+<h2 id="搭建业务服务A"><a href="#搭建业务服务A" class="headerlink" title="搭建业务服务A"></a>搭建业务服务A</h2><p>在spring-cloud-examples项目下创建一个业务服务A的子项目spring-cloud-example-biz-a，在pom.xml中添加以下依赖包：<br>    <dependencies><br>        <!-- Spring Boot Web Starter --><br>        <dependency><br>            <groupid>org.springframework.boot</groupid><br>            <artifactid>spring-boot-starter-web</artifactid><br>        </dependency></dependencies></p>
+<pre><code>    &lt;!-- feign --&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-cloud-starter-openfeign&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+
+    &lt;!-- Eureka Client Starter --&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-cloud-starter-netflix-eureka-client&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+
+    &lt;!-- Config Client Starter --&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-cloud-starter-config&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+&lt;/dependencies&gt;</code></pre><p>在spring-cloud-example-config配置中心项目的src/main/resource/configs目录下添加一个服务配置文件spring-cloud-example-biz-a.yml，配置如下：<br>spring:<br>  application:<br>    name: spring-cloud-example-biz-a</p>
+<p>server:<br>  port: 8010</p>
+<p> /*Eureka相关配置<br>eureka:<br>  client:<br>    serviceUrl:<br>      defaultZone: <a href="http://localhost:8001/eureka/" target="_blank" rel="noopener">http://localhost:8001/eureka/</a><br>  instance:<br>    lease-renewal-interval-in-seconds: 10      # 心跳时间，即服务续约间隔时间（缺省为30s）<br>    lease-expiration-duration-in-seconds: 60  # 发呆时间，即服务续约到期时间（缺省为90s）<br>    prefer-ip-address: true<br>    instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}}</p>
+<p>在spring-cloud-example-biz-a项目的src/main/resource/目录添加bootstrap.yml配置文件，配置如下：<br>spring:<br>  cloud:<br>    config:<br>      name: spring-cloud-example-biz-a #配置文件名称，多个通过逗号分隔<br>      uri: <a href="http://localhost:8000" target="_blank" rel="noopener">http://localhost:8000</a> #Config Server服务地址</p>
+<p>添加一个示例接口，代码参考：</p>
+<p>@RestController<br>@RequestMapping(“/hello”)<br>public class HelloController {<br>    /**<br>     * 示例方法<br>     *<br>     * @return<br>     */<br>    @GetMapping<br>    public String sayHello() {<br>        return “Hello,This is Biz-A Service.”;<br>    }<br>}</p>
+<h2 id="搭建业务服务B"><a href="#搭建业务服务B" class="headerlink" title="搭建业务服务B"></a>搭建业务服务B</h2><p>参考上面业务服务A搭建另外一个业务服务B。</p>
+<h2 id="搭建服务网关"><a href="#搭建服务网关" class="headerlink" title="搭建服务网关"></a>搭建服务网关</h2><p>在spring-cloud-examples项目下创建一个业务服务A的子项目spring-cloud-example-gateway，在pom.xml中添加以下依赖包：<br>  <dependencies><br>        <!-- zuul --><br>        <dependency><br>            <groupid>org.springframework.cloud</groupid><br>            <artifactid>spring-cloud-starter-netflix-zuul</artifactid><br>        </dependency></dependencies></p>
+<pre><code>    &lt;!-- Eureka Client Starter --&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-cloud-starter-netflix-eureka-client&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+
+    &lt;!-- Config Client Starter --&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-cloud-starter-config&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+&lt;/dependencies&gt;</code></pre><p>在spring-cloud-example-config配置中心项目的src/main/resource/configs目录下添加一个服务配置文件spring-cloud-example-gateway.yml，配置如下：</p>
+<p>spring:<br>  application:<br>    name: spring-cloud-example-gateway</p>
+<p>server:<br>  port: 8002</p>
+<p> #Eureka相关配置<br>eureka:<br>  client:<br>    serviceUrl:<br>      defaultZone: <a href="http://localhost:8001/eureka/" target="_blank" rel="noopener">http://localhost:8001/eureka/</a><br>  instance:<br>    lease-renewal-interval-in-seconds: 10      # 心跳时间，即服务续约间隔时间（缺省为30s）<br>    lease-expiration-duration-in-seconds: 60  # 发呆时间，即服务续约到期时间（缺省为90s）<br>    prefer-ip-address: true<br>    instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}}</p>
+<p>在spring-cloud-example-gateway项目的src/main/resource/目录添加bootstrap.yml配置文件，配置如下：</p>
+<p>spring:<br>  cloud:<br>    config:<br>      name: spring-cloud-example-gateway #配置文件名称，多个通过逗号分隔<br>      uri: <a href="http://localhost:8000" target="_blank" rel="noopener">http://localhost:8000</a> #Config Server服务地址</p>
+<p>启动类添加注解@EnableZuulProxy通过启用网关代理服务。</p>
+<p>@SpringBootApplication<br>@EnableZuulProxy<br>public class Application {</p>
+<pre><code>public static void main(String[] args) {
+    SpringApplication.run(Application.class, args);
+}</code></pre><p>}</p>
+<h2 id="启动示例"><a href="#启动示例" class="headerlink" title="启动示例"></a>启动示例</h2><p>启动顺序<br>spring-cloud-example-config&gt;&gt;spring-cloud-example-eureka&gt;&gt;spring-cloud-example-biz-a/spring-cloud-example-biz-b/spring-cloud-example-gateway</p>
+<p>通过网关访问服务A接口</p>
+<p> <img src="/2019/09/23/微服务学习/a.png" alt="a"></p>
+<p>通过网关访问服务B接口</p>
+<p><img src="/2019/09/23/微服务学习/b.png" alt="b"></p>
+<h2 id="服务之间调用"><a href="#服务之间调用" class="headerlink" title="服务之间调用"></a>服务之间调用</h2><p>在业务服务A中添加一个Feign Client Bean，参考代码如下：</p>
+<p>@FeignClient(name = “spring-cloud-example-biz-b”) # 指定服务名称<br>public interface RemoteService {</p>
+<pre><code>/**
+ * 调用服务B的hello方法
+ *
+ * @return
+ */
+@GetMapping(&quot;/hello&quot;) #指定请求地址
+String sayHello();</code></pre><p>}</p>
+<p>业务服务A示例接口类增加call2b接口，代码如下：</p>
+<p>@RestController<br>@RequestMapping(“/hello”)<br>public class HelloController {</p>
+<pre><code>@Autowired
+private RemoteService remoteService;
+
+/**
+ * 示例方法
+ *
+ * @return
+ */
+@GetMapping
+public String sayHello() {
+    return &quot;Hello,This is Biz-A Service.&quot;;
+}
+
+/**
+ * 示例方法：调用服务B
+ *
+ * @return
+ */
+@GetMapping(path = &quot;/call2b&quot;)
+public String sayHello2B() {
+    return remoteService.sayHello();
+}</code></pre><p>}</p>
+<p>重启业务服务A，通过调用/hello/call2b接口：<br><img src="/2019/09/23/微服务学习/aa.png" alt="aa"></p>
+<h2 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h2><p>码云：centychen/spring-cloud-examples</p>
+<hr>
+<h1 id="下一代微服务"><a href="#下一代微服务" class="headerlink" title="下一代微服务"></a>下一代微服务</h1><p>目前网上很多说是下一代微服务架构就是Service Mesh，Service Mesh主流框架有Linkerd和Istio，其中Istio有大厂加持所以呼声更高。Service Mesh我接触还不多，但是个人感觉并不一定能称为下一代微服务架构，可能认为是服务治理的另外一种解决方案更合适，是否能够取代当前的微服务架构还需要持续观察。</p>
+<hr>
+
+      
+    </div>
+    
+    
+    
+    <div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+  
+</div>
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/weixin.png" alt="Mrcrane 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/zhifubao.jpg" alt="Mrcrane 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/微服务学习/" rel="tag"><i class="fa fa-envira"></i> 微服务学习</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/25/古词古韵/" rel="next" title="古词古韵">
+                <i class="fa fa-chevron-left"></i> 古词古韵
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+            <a href="/">
+              <img class="site-author-image" itemprop="image" src="/uploads/1.jpg" alt="Mrcrane">
+                </a>
+            
+              <p class="site-author-name" itemprop="name">Mrcrane</p>
+              <p class="site-description motion-element" itemprop="description">越努力，越幸运</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Mrcraner" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="1225994270@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://Weibo.com/Mr_WakeUp" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-globe"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/罗辑" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-globe"></i>知乎</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#开篇"><span class="nav-number">1.</span> <span class="nav-text">开篇</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是微服务"><span class="nav-number">1.1.</span> <span class="nav-text">什么是微服务</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#微服务"><span class="nav-number">2.</span> <span class="nav-text">微服务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#微服务典型架构"><span class="nav-number">3.</span> <span class="nav-text">微服务典型架构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#微服务框架"><span class="nav-number">4.</span> <span class="nav-text">微服务框架</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#搭建典型微服务架构"><span class="nav-number">5.</span> <span class="nav-text">搭建典型微服务架构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#搭建服务配置中心"><span class="nav-number">5.1.</span> <span class="nav-text">搭建服务配置中心</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#搭建服务注册中心"><span class="nav-number">5.2.</span> <span class="nav-text">搭建服务注册中心</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#搭建业务服务A"><span class="nav-number">5.3.</span> <span class="nav-text">搭建业务服务A</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#搭建业务服务B"><span class="nav-number">5.4.</span> <span class="nav-text">搭建业务服务B</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#搭建服务网关"><span class="nav-number">5.5.</span> <span class="nav-text">搭建服务网关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动示例"><span class="nav-number">5.6.</span> <span class="nav-text">启动示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务之间调用"><span class="nav-number">5.7.</span> <span class="nav-text">服务之间调用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例代码"><span class="nav-number">5.8.</span> <span class="nav-text">示例代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#下一代微服务"><span class="nav-number">6.</span> <span class="nav-text">下一代微服务</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mrcrane</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+<!-- 新增访客统计代码 -->
+
+<div class="busuanzi-count">
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      访问用户： <span class="busuanzi-value" id="busuanzi_value_site_uv"></span> 人
+    </span>
+    <div class="powered-by"></div>
+    <span class="site-uv">
+      <i class="fa fa-eye"></i>
+      访问次数： <span class="busuanzi-value" id="busuanzi_value_site_pv"></span> 次
+    </span>
+    <!-- 博客字数统计 -->
+    <span class="site-pv">
+      <i class="fa fa-pencil"></i>
+      博客全站共： <span class="post-count"></span> 字
+    </span>
+</div>
+<!-- 新增访客统计代码 END-->
+<!-- 在网页底部添加网站运行时间 -->
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("2019/7/20 13:20:56");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "Run for "+dnum+" Days ";
+        document.getElementById("times").innerHTML = hnum + " Hours " + mnum + " m " + snum + " s";
+    }
+setInterval("createtime()",250);
+</script>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "box";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
